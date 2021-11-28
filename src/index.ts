@@ -15,4 +15,4 @@ const app = express();
 
 app.use(routes(driver))
 
-app.listen(4200)
+app.listen(process.env.NODE_ENV == 'prod' ? 80 : 4200)
