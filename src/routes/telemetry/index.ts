@@ -8,6 +8,7 @@ export default (session: Session) => {
 		const { event, properties, source, timestamp } = req.body || {};
 
 		console.log(event, properties, source, timestamp);
+		res.send({success: true})
 	})
 
 	return router
