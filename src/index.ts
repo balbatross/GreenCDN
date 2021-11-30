@@ -13,6 +13,6 @@ const driver = neo4j.driver(
 
 const app = express();
 
-app.use(routes(driver))
+app.use('/api/', routes(driver))
 
 app.listen(process.env.NODE_ENV == 'prod' ? 80 : 4200)
