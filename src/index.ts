@@ -3,7 +3,7 @@ config();
 
 import express from 'express';
 import routes from './routes';
-
+import bodyParser from 'body-parser';
 import neo4j from "neo4j-driver"
 
 const driver = neo4j.driver(
@@ -12,7 +12,7 @@ const driver = neo4j.driver(
 )
 
 const app = express();
+app.use(bodyParser.json())
 
 app.use('/api/', routes(driver))
-
 app.listen(process.env.NODE_ENV == 'prod' ? 80 : 4200)

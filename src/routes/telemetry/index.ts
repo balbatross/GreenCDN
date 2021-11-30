@@ -5,7 +5,7 @@ export default (session: Session) => {
 	const router = Router()
 
 	router.post('/', async (req, res) => {
-		const { event, properties, source, timestamp } = req.body;
+		const { event, properties, source, timestamp } = req.body || {};
 
 		console.log(event, properties, source, timestamp);
 	})
