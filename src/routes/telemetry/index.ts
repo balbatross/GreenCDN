@@ -11,7 +11,7 @@ export default async (session: Session, pgClient: Pool) => {
 
 		await client.query(`
 			INSERT INTO green_screen_telemetry 
-			(event, properties, source, timestamp, created_at, created_by)
+			(event, properties, source, time, created_at, created_by)
 			VALUES 
 			($1, $2, $3, $4, $5, $6)
 		`, 
