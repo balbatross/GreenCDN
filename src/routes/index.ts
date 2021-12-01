@@ -3,14 +3,15 @@ import provisionRouter from './provision'
 import distributeRouter from './distribute'
 import telemetryRouter from './telemetry'
 import { Driver } from 'neo4j-driver-core'
+import { Pool, PoolClient } from 'pg'
 
-export default (driver: Driver) => {
+export default async (driver: Driver, pgClient: Pool) => {
 
 	const session = driver.session()
 
 	const router = Router()
 
-	router.use(`/telemetry`, telemetryRouter(session))
+	router.use(`/telemetry`, await telemetryRouter(session, pgClient))
 	router.use('/provision', provisionRouter(session))
 	router.use('/distribute', distributeRouter(session))
 
